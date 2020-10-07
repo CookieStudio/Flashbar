@@ -127,6 +127,15 @@ class Flashbar private constructor(private var builder: Builder) {
             setPositiveActionTextAppearance(builder.positiveActionTextAppearance)
             setPositiveActionTapListener(builder.onPositiveActionTapListener)
 
+            setAlternativeActionText(builder.alternativeActionText)
+            setAlternativeActionTextSpanned(builder.alternativeActionTextSpanned)
+            setAlternativeActionTextTypeface(builder.alternativeActionTextTypeface)
+            setAlternativeActionTextSizeInPx(builder.alternativeActionTextSizeInPx)
+            setAlternativeActionTextSizeInSp(builder.alternativeActionTextSizeInSp)
+            setAlternativeActionTextColor(builder.alternativeActionTextColor)
+            setAlternativeActionTextAppearance(builder.alternativeActionTextAppearance)
+            setAlternativeActionTapListener(builder.onAlternativeActionTapListener)
+
             setNegativeActionText(builder.negativeActionText)
             setNegativeActionTextSpanned(builder.negativeActionTextSpanned)
             setNegativeActionTextTypeface(builder.negativeActionTextTypeface)
@@ -198,6 +207,15 @@ class Flashbar private constructor(private var builder: Builder) {
         internal var positiveActionTextColor: Int? = null
         internal var positiveActionTextAppearance: Int? = null
         internal var onPositiveActionTapListener: OnActionTapListener? = null
+
+        internal var alternativeActionText: String? = null
+        internal var alternativeActionTextSpanned: Spanned? = null
+        internal var alternativeActionTextTypeface: Typeface? = null
+        internal var alternativeActionTextSizeInPx: Float? = null
+        internal var alternativeActionTextSizeInSp: Float? = null
+        internal var alternativeActionTextColor: Int? = null
+        internal var alternativeActionTextAppearance: Int? = null
+        internal var onAlternativeActionTapListener: OnActionTapListener? = null
 
         internal var negativeActionText: String? = null
         internal var negativeActionTextSpanned: Spanned? = null
@@ -583,6 +601,72 @@ class Flashbar private constructor(private var builder: Builder) {
         fun positiveActionTapListener(onActionTapListener: OnActionTapListener) = apply {
             this.onPositiveActionTapListener = onActionTapListener
         }
+
+        fun alternativeActionText(text: String) = apply {
+            alternativeActionText = text
+        }
+
+        fun alternativeActionText(@StringRes actionTextId: Int) = apply {
+            alternativeActionText(activity.getString(actionTextId))
+        }
+
+        /**
+         * Specifies the positive action text string span
+         */
+        fun alternativeActionText(actionText: Spanned) = apply { this.alternativeActionTextSpanned = actionText }
+
+        /**
+         * Specifies the positive action text typeface
+         */
+        fun alternativeActionTextTypeface(typeface: Typeface) = apply { this.alternativeActionTextTypeface = typeface }
+
+        /**
+         * Specifies the positive action text size (in pixels)
+         */
+        fun alternativeActionTextSizeInPx(size: Float) = apply { this.alternativeActionTextSizeInPx = size }
+
+        /**
+         * Specifies the positive action text size (in sp)
+         */
+        fun alternativeActionTextSizeInSp(size: Float) = apply { this.alternativeActionTextSizeInSp = size }
+
+        /**
+         * Specifies the positive action text color
+         */
+        fun alternativeActionTextColor(@ColorInt color: Int) = apply { this.alternativeActionTextColor = color }
+
+        /**
+         * Specifies the positive action text color resource
+         */
+        fun alternativeActionTextColorRes(@ColorRes colorId: Int) = apply {
+            this.alternativeActionTextColor = ContextCompat.getColor(activity, colorId)
+        }
+
+        /**
+         * Specifies the positive action text appearance
+         */
+        fun alternativeActionTextAppearance(@StyleRes appearance: Int) = apply {
+            this.alternativeActionTextAppearance = appearance
+        }
+
+        /**
+         * Sets listener to receive tap events on the positive action
+         */
+        fun alternativeActionTapListener(onActionTapListener: OnActionTapListener) = apply {
+            this.onAlternativeActionTapListener = onActionTapListener
+        }
+
+
+
+
+
+
+
+
+
+
+
+
 
         /**
          * Specifies the negative action text string

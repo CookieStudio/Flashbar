@@ -33,7 +33,7 @@ public class JavaSampleActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (flashbar == null) {
-                    flashbar = progressAdvanced();
+                    flashbar = positiveNegativeAction();
                 }
                 flashbar.show();
             }
@@ -206,18 +206,26 @@ public class JavaSampleActivity extends AppCompatActivity {
 
     private Flashbar positiveNegativeAction() {
         return new Flashbar.Builder(this)
-                .gravity(Flashbar.Gravity.BOTTOM)
+                .gravity(Flashbar.Gravity.TOP)
                 .title("Hello World!")
                 .message(
                         "You can show either or both of the positive/negative buttons and "
                                 + "customize them similar to the primary button.")
                 .backgroundColorRes(R.color.slate_black)
                 .positiveActionText("YES")
+                .alternativeActionText("MAYBE")
                 .negativeActionText("NO")
                 .positiveActionTapListener(new Flashbar.OnActionTapListener() {
                     @Override
                     public void onActionTapped(@NotNull Flashbar bar) {
                         bar.dismiss();
+                    }
+                })
+                .alternativeActionTapListener(new Flashbar.OnActionTapListener() {
+                    @Override
+                    public void onActionTapped(@NotNull Flashbar bar) {
+                        bar.dismiss();
+                        Log.e("klop", "alternative tap");
                     }
                 })
                 .negativeActionTapListener(new Flashbar.OnActionTapListener() {
@@ -227,6 +235,7 @@ public class JavaSampleActivity extends AppCompatActivity {
                     }
                 })
                 .positiveActionTextColorRes(R.color.yellow)
+                .alternativeActionTextColorRes(R.color.yellow)
                 .negativeActionTextColorRes(R.color.yellow)
                 .build();
     }

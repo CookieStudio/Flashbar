@@ -330,6 +330,60 @@ internal class FlashbarView(context: Context) : LinearLayout(context) {
         }
     }
 
+    internal fun setAlternativeActionText(text: String?) {
+        if (TextUtils.isEmpty(text)) return
+
+        this.fbSecondaryActionContainer.visibility = VISIBLE
+        this.fbAlternativeAction.text = text
+        this.fbAlternativeAction.visibility = VISIBLE
+    }
+
+    internal fun setAlternativeActionTextSpanned(text: Spanned?) {
+        if (text == null) return
+
+        this.fbSecondaryActionContainer.visibility = VISIBLE
+        this.fbAlternativeAction.text = text
+        this.fbAlternativeAction.visibility = VISIBLE
+    }
+
+    internal fun setAlternativeActionTextTypeface(typeface: Typeface?) {
+        if (typeface == null) return
+        this.fbAlternativeAction.typeface = typeface
+    }
+
+    internal fun setAlternativeActionTextSizeInPx(size: Float?) {
+        if (size == null) return
+        this.fbAlternativeAction.setTextSize(TypedValue.COMPLEX_UNIT_PX, size)
+    }
+
+    internal fun setAlternativeActionTextSizeInSp(size: Float?) {
+        if (size == null) return
+        this.fbAlternativeAction.setTextSize(TypedValue.COMPLEX_UNIT_SP, size)
+    }
+
+    internal fun setAlternativeActionTextColor(color: Int?) {
+        if (color == null) return
+        this.fbAlternativeAction.setTextColor(color)
+    }
+
+    internal fun setAlternativeActionTextAppearance(messageAppearance: Int?) {
+        if (messageAppearance == null) return
+
+        if (SDK_INT >= M) {
+            this.fbAlternativeAction.setTextAppearance(messageAppearance)
+        } else {
+            this.fbAlternativeAction.setTextAppearance(fbPrimaryAction.context, messageAppearance)
+        }
+    }
+
+    internal fun setAlternativeActionTapListener(listener: Flashbar.OnActionTapListener?) {
+        if (listener == null) return
+
+        this.fbAlternativeAction.setOnClickListener {
+            listener.onActionTapped(parentFlashbarContainer.parentFlashbar)
+        }
+    }
+
     internal fun setNegativeActionText(text: String?) {
         if (TextUtils.isEmpty(text)) return
 

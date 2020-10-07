@@ -21,7 +21,7 @@ class KotlinSampleActivity : AppCompatActivity() {
 
         show.setOnClickListener {
             if (flashbar == null) {
-                flashbar = basic()
+                flashbar = positiveNegativeAction()
             }
             flashbar?.show()
         }

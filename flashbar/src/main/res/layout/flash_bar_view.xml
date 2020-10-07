@@ -114,6 +114,16 @@
                 tools:visibility="gone" />
 
             <com.andrognito.flashbar.view.FbButton
+                android:id="@+id/fbAlternativeAction"
+                style="@style/FbButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/FbButtonTextStyle"
+                android:visibility="gone"
+                tools:text="MAYBE"
+                tools:visibility="gone" />
+
+            <com.andrognito.flashbar.view.FbButton
                 android:id="@+id/fbNegativeAction"
                 style="@style/FbButtonStyle"
                 android:layout_width="wrap_content"
